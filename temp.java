@@ -1,3 +1,5 @@
+//Only supports digits upto 16 digits and small letters.
+
 import java.util.*;
 class key_value{
 private int sum;
@@ -14,10 +16,10 @@ j=j-96;
 else if(key1[i]>=48 && key1[i]<=57)
 j=j-48;
 else
-j=j-j;
+j=0;
 sum=sum+j;
 }
-//System.out.println("z="+sum);
+System.out.println("z="+sum);
 return sum;
 }
 }
@@ -51,13 +53,12 @@ char value_key[]=key.toCharArray();
 String length_val=String.valueOf(prime_length);
 char[] length_value=length_val.toCharArray();
 Random r=new Random();
-String
-alphabet="ABCDEFGHIJKLMNOPQRSTUVabcdefghijklmnopqrstuvwxyz0123456789,./<>?;+_(*&^$%#@!):";
+String alphabet="ABCDEFGHIJKLMNOPQRSTUVabcdefghijklmnopqrstuvwxyz0123456789!@#%^&*()_+=-}{|{}}";
 int len=alphabet.length();
 for (int i=0;i<512;i++){
 hash[i]=alphabet.charAt(r.nextInt(len));
 }
-if (prime_value.length()<10){
+if (prime_length<10){
 hash[z-2]='$';
 hash[z-1]=length_value[0];
 }
@@ -108,25 +109,25 @@ String original_msg=new String(orgmsg);
 return original_msg;
 }
 }
-public class Main{
+public class temp{
 public static void main(String[] args){
 Scanner scan=new Scanner(System.in);
 System.out.println("Enter the message to be encrypted.");
 String value=scan.nextLine();
-System.out.println("Enter the key with which message to be encrypted.");
 char key[]=new char[16];
 Random r1=new Random();
-String
-alphabet="ABCDEFGHIJKLMNOPQRSTUVabcdefghijklmnopqrstuvwxyz0123456789,./<>?;+_(*&^$%#@!):";
+String alphabet="ABCDEFGHIJKLMNOPQRSTUVabcdefghijklmnopqrstuvwxyz";
 int len16=alphabet.length();
 for (int i=0;i<16;i++){
 key[i]=alphabet.charAt(r1.nextInt(len16));
 }
+System.out.println("The key is ");
 String key1=new String(key);
+System.out.println(key1);
 int key_length=key1.length();
 int value_length=value.length();
 if(key_length!=16 || value_length>16){
-System.out.println("Key length or value length exceeded. Must be equal to 16");
+System.out.println("Key length or value length exceeded. Must be equal to or less than 16");
 }
 else{
 encryption ency1=new encryption();
