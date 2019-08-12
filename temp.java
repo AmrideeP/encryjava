@@ -1,6 +1,5 @@
-//Only supports digits upto 16 digits and small letters.
-
 import java.util.*;
+
 class key_value{
 private int sum;
 int key_sum(String key){
@@ -24,12 +23,19 @@ return sum;
 }
 }
 class position_value{
+int constant_factor_sum=0;
+int constant_factor_key=0;
 private int position_value;
 int pos_value(int sum,char value, int position){
-int position_value=(int) 2*value+3*position;
-//System.out.println(position_value);
+constant_factor_key+=1;
+int value1=(int) value -65;
+int position_value=(int) Math.round(2*value1+3*position+constant_factor_key*3.14f);
+System.out.println(position_value);
 if(position_value==sum)
-return (sum+2*position);
+{
+constant_factor_sum+=1;
+return (sum+2*position+constant_factor_sum);
+}
 else
 return position_value;
 }
@@ -97,6 +103,7 @@ if(hash_char[len_loc-2]=='$')
 message_length=(int) hash_char[len_loc-1]-48;
 else
 message_length=(int) hash_char[len_loc-1]-38;
+System.out.println("message length is "+message_length);
 int positn_value[]=new int[16];
 char[] orgmsg=new char[message_length];
 for(int j=0;j<16;j++){
